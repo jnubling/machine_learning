@@ -5,7 +5,9 @@ One simple continuous value to predict (one dependent variable)
 from data_preprocessing import DataPreprocessing
 
 from sklearn.linear_model import LinearRegression
+
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 dataset = DataPreprocessing(path='../data/50_Startups.csv')
@@ -17,7 +19,32 @@ dataset.split_training_and_test(test_size=0.2, random_state=0)
 ###################################################################
 # visualising the data
 ###################################################################
+plt.scatter(
+    x=dataset.x_independent_variables[:,3],
+    y=dataset.y_dependent_variables,
+    color='blue')
+plt.title('R&D Spend vs Profit')
+plt.xlabel('R&D Spend')
+plt.ylabel('Profit')
+plt.show()
 
+plt.scatter(
+    x=dataset.x_independent_variables[:,4],
+    y=dataset.y_dependent_variables,
+    color='blue')
+plt.title('Administration Spend vs Profit')
+plt.xlabel('Administration Spend')
+plt.ylabel('Profit')
+plt.show()
+
+plt.scatter(
+    x=dataset.x_independent_variables[:,5],
+    y=dataset.y_dependent_variables,
+    color='blue')
+plt.title('Marketing Spend vs Profit')
+plt.xlabel('Marketing Spend')
+plt.ylabel('Profit')
+plt.show()
 
 ###################################################################
 # training the multiple linear regression model on the test set
