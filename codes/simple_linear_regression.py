@@ -51,3 +51,13 @@ plt.title('Salary vs Experience (test set)')
 plt.xlabel('years of experience')
 plt.ylabel('salary')
 plt.show()
+
+###################################################################
+# Predicting a single value and getting the coefficients
+###################################################################
+print(f'A person with 12 years of experience will have a salary of ${regressor.predict([[12]])[0]}.')
+
+print(f'\nThe coefficient b0 of the equation is {regressor.coef_}')
+print(f'The point of interception is {regressor.intercept_}')
+
+print(f'\n The final equation is: Salary = {regressor.coef_[0]} X Years of Experience + {regressor.intercept_}')
