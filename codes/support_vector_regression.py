@@ -8,6 +8,7 @@ import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVR
+from sklearn.metrics import r2_score
 
 
 dataset = pd.read_csv('../data/Position_Salaries.csv')
@@ -22,10 +23,12 @@ plt.xlabel('Level')
 plt.ylabel('Salary')
 plt.show()
 
+# the scaling is compulsory on SVR
 sc_X = StandardScaler()
 sc_y = StandardScaler()
 X = sc_X.fit_transform(X=X)
 y = y.reshape(len(y),1)
+# it is important to reshape the dependent variable dataframe in SVR
 y = sc_y.fit_transform(y)
 
 # Training the SVR Model on the whole dataset
@@ -75,3 +78,6 @@ plt.title('Support Vector Regression')
 plt.xlabel('Level')
 plt.ylabel('Salary')
 plt.show()
+
+# evaluating the model performance
+# r2_score(y_true=y_test, y_pred=y_pred)

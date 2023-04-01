@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from sklearn.ensemble import RandomForestRegressor
-
+from sklearn.metrics import r2_score
 
 dataset = pd.read_csv('../data/Position_Salaries.csv')
 
@@ -45,3 +45,6 @@ plt.title('Decision Tree Regression')
 plt.xlabel('Level')
 plt.ylabel('Salary')
 plt.show()
+
+# evaluating the model performance
+# r2_score(y_true=y_test, y_pred=y_pred)

@@ -5,6 +5,7 @@ One simple continuous value to predict (one dependent variable)
 from data_preprocessing import DataPreprocessing
 
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -78,3 +79,6 @@ print(
 # Administration Spend = 130000,
 # Marketing Spend = 300000 and State = 'California'(1,0,0)
 print(regressor.predict([[1, 0, 0, 160000, 130000, 300000]]))
+
+# evaluating the model performance
+# r2_score(y_true=y_test, y_pred=y_pred)

@@ -5,6 +5,7 @@ One simple continuous value to predict (one dependent variable)
 # from data_preprocessing import DataPreprocessing
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
+from sklearn.metrics import r2_score
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -33,3 +34,6 @@ plt.ylabel('Salary')
 plt.show()
 
 lin_reg.predict(X=poly_reg.fit_transform(X=[[6.5]]))
+
+# evaluating the model performance
+# r2_score(y_true=y_test, y_pred=y_pred)
