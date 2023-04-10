@@ -1,6 +1,6 @@
 """
-SVM model for classification (SVC)
-One simple categorical value to predict
+Naïve Bayes Classification Model
+One simple categorical probability to predict
 """
 import pandas as pd
 import numpy as np
@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from matplotlib.colors import ListedColormap
 # from sklearn.impute import SimpleImputer
-from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
@@ -38,8 +38,8 @@ X_train, X_test, y_train, y_test = train_test_split(
                                         random_state=0
                                         )
 
-# train the SVC model on the training set
-classifier = SVC(kernel='linear', random_state=0)
+# train the Naive Bayes model on the training set
+classifier = GaussianNB()
 classifier.fit(X_train, y_train)
 
 # predicting a new value
@@ -66,12 +66,12 @@ X_set, y_set = sc.inverse_transform(X_train), y_train
 X1, X2 = np.meshgrid(np.arange(
                         start=X_set[:, 0].min() - 10,
                         stop=X_set[:, 0].max() + 10,
-                        step=1
+                        step=0.25
                         ),
                      np.arange(
                         start=X_set[:, 1].min() - 1000,
                         stop=X_set[:, 1].max() + 1000,
-                        step=1
+                        step=0.25
                         )
                     )
 plt.contourf(
@@ -91,7 +91,7 @@ for i, j in enumerate(np.unique(y_set)):
             c=ListedColormap(('red', 'green'))(i),
             label=j
         )
-plt.title('SVC (Training set)')
+plt.title('Naïve Bayes (Training set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -102,12 +102,12 @@ X_set, y_set = sc.inverse_transform(X_test), y_test
 X1, X2 = np.meshgrid(np.arange(
                         start=X_set[:, 0].min() - 10,
                         stop=X_set[:, 0].max() + 10,
-                        step=1
+                        step=0.25
                         ),
                      np.arange(
                         start = X_set[:, 1].min() - 1000,
                         stop=X_set[:, 1].max() + 1000,
-                        step=1
+                        step=0.25
                         )
                     )
 plt.contourf(
@@ -133,7 +133,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(('red', 'green'))(i),
         label=j
         )
-plt.title('SVC (Test set)')
+plt.title('Naïve Bayes (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()

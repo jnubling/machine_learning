@@ -1,6 +1,6 @@
 """
-SVM model for classification (SVC)
-One simple categorical value to predict
+Kernel-SVM model for classification
+One simple no linearly-separable categorical value to predict
 """
 import pandas as pd
 import numpy as np
@@ -38,8 +38,8 @@ X_train, X_test, y_train, y_test = train_test_split(
                                         random_state=0
                                         )
 
-# train the SVC model on the training set
-classifier = SVC(kernel='linear', random_state=0)
+# train the Kernel-SVM model on the training set
+classifier = SVC(kernel='rbf', random_state=0)
 classifier.fit(X_train, y_train)
 
 # predicting a new value
@@ -91,7 +91,7 @@ for i, j in enumerate(np.unique(y_set)):
             c=ListedColormap(('red', 'green'))(i),
             label=j
         )
-plt.title('SVC (Training set)')
+plt.title('Kernel-SVM (Training set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -133,7 +133,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(('red', 'green'))(i),
         label=j
         )
-plt.title('SVC (Test set)')
+plt.title('Kernel-SVM (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
