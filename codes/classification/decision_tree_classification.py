@@ -1,5 +1,5 @@
 """
-Naïve Bayes Classification Model
+Decision Tree Classification Model
 One simple categorical probability to predict
 """
 import pandas as pd
@@ -7,8 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from matplotlib.colors import ListedColormap
-# from sklearn.impute import SimpleImputer
-from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, accuracy_score
@@ -38,7 +37,7 @@ X_train, X_test, y_train, y_test = train_test_split(
                                         )
 
 # train the Naive Bayes model on the training set
-classifier = GaussianNB()
+classifier = DecisionTreeClassifier(criterion='entropy', random_state=0)
 classifier.fit(X_train, y_train)
 
 # predicting a new value
