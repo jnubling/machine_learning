@@ -1,5 +1,5 @@
 """
-Decision Tree Classification Model
+Random Forest Classification Model
 One simple categorical probability to predict
 """
 import pandas as pd
@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from matplotlib.colors import ListedColormap
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, accuracy_score
@@ -37,7 +37,7 @@ X_train, X_test, y_train, y_test = train_test_split(
                                         )
 
 # train the Naive Bayes model on the training set
-classifier = DecisionTreeClassifier(criterion='entropy', random_state=0)
+classifier = RandomForestClassifier(n_estimators=40, random_state=0, criterion='entropy')
 classifier.fit(X_train, y_train)
 
 # predicting a new value
@@ -64,12 +64,12 @@ X_set, y_set = sc.inverse_transform(X_train), y_train
 X1, X2 = np.meshgrid(np.arange(
                         start=X_set[:, 0].min() - 10,
                         stop=X_set[:, 0].max() + 10,
-                        step=0.25
+                        step=1
                         ),
                      np.arange(
                         start=X_set[:, 1].min() - 1000,
                         stop=X_set[:, 1].max() + 1000,
-                        step=0.25
+                        step=1
                         )
                     )
 plt.contourf(
@@ -89,7 +89,7 @@ for i, j in enumerate(np.unique(y_set)):
             c=ListedColormap(('red', 'green'))(i),
             label=j
         )
-plt.title('Decision Tree (Training set)')
+plt.title('Random Forest (Training set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -100,12 +100,12 @@ X_set, y_set = sc.inverse_transform(X_test), y_test
 X1, X2 = np.meshgrid(np.arange(
                         start=X_set[:, 0].min() - 10,
                         stop=X_set[:, 0].max() + 10,
-                        step=0.25
+                        step=1
                         ),
                      np.arange(
                         start = X_set[:, 1].min() - 1000,
                         stop=X_set[:, 1].max() + 1000,
-                        step=0.25
+                        step=1
                         )
                     )
 plt.contourf(
@@ -131,7 +131,7 @@ for i, j in enumerate(np.unique(y_set)):
         c=ListedColormap(('red', 'green'))(i),
         label=j
         )
-plt.title('Decision Tree (Test set)')
+plt.title('Random Forest (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
